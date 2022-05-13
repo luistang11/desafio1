@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="encriptador.css">
+    <link rel="stylesheet" href="./fotos desafio 1/logoAlura.png">
+    <link rel="stylesheet" href="./fotos desafio1/Frame 1.png">
+    <link rel="stylesheet" href="./fotos desafio1/Muñeco.png">
+    <title>Encriptador de texto</title>
+</head>
+<body class="container" style="background-color: #F3F5FC;">
+    <div class="container pagEntera">
+    <header class="container logo">
+    <img src="./fotos desafio 1/logoAlura.png" style="margin-top: 20px; margin-left: 40px;">
+    </header>
+    <div class="container meterTexto">
+        <div class="todojunto" style="display: flex; width: 100%;">
+        <section class="lodelaizquierda" style="margin-right: 20px">
+        <textarea type="text"  class="ponertxt" placeholder="Ingrese el texto aquí"></textarea>
+        <div class="Buttoms" style="width: 100%;  margin-top: 22.5%;">
+            <div class="container" style="display: block;">
+                <h6 style="padding:15px; text-align: center;"><img src="./fotos desafio 1/alerta.png"style="width:15px">Solo letras minúsculas y sin acentos.</h6>
+                <div style="display: flex">
+                <button id="butun" class="Encriptar" type="submit">Encriptar</button>
+                <button id="butun" class="Desencriptar" type="submit">Desencriptar</button>
+                </div>
+            </div>
+        </div>
+        </section>
+
+        <section class="lodeladerecha" style="margin-left:20px">
+        <textarea class="resultado" readonly="readonly"></textarea>
+        <button class="Copiar" type="submit">Copiar</button>
+        </section>
+        </div>
+        
+    </div>
+        
+
+
+    <footer class="footer">
+        <p>Hecho por Luis Tang</p>
+        <a href="https://www.linkedin.com/in/luis-daniel-tang-rengifo-9509b8219/"><img src="./fotos desafio 1/logoLinkedin.png" alt="LogoLinkedin"></a>
+        <a href="https://github.com/luistang11"><img src="./fotos desafio 1/GitHub_logo.png" alt="logoGitHub"></a>
+    </footer>
+
+
+    <script>
+        textoArea= document.querySelector("textarea")
+        btnEncriptar=document.querySelector(".Encriptar")
+        btnDesencriptar=document.querySelector(".Desencriptar")
+        textoAreaResultado= document.querySelector(".resultado")
+        copiar=document.querySelector(".Copiar")
+
+        copiar.addEventListener("click",  function copy(){
+            textoAreaResultado.focus();
+            document.execCommand('selectAll');
+            document.execCommand('copy'); 
+        })
+        function encriptar(){
+            var texto = textoArea.value;
+
+            var textoCifrado = texto.replace(/e/gi, "enter").replace(/i/gi, "imes").replace(/a/gi, "ai").replace(/o/gi, "ober").replace(/u/gi, "ufat");
+            textoAreaResultado.value = textoCifrado;
+        }
+        function desencriptar (){ 
+            var texto = textoArea.value;
+            var textoCifrado = texto.replace(/enter/gi, "e").replace(/imes/gi, "i").replace(/ai/gi, "a").replace(/ober/gi, "o").replace(/ufat/gi, "u"); 
+            textoAreaResultado.value = textoCifrado;
+        }
+
+        btnDesencriptar.onclick=desencriptar;
+        btnEncriptar.onclick=encriptar;
+
+
+    </script>
+    
+</body>
+</html>
